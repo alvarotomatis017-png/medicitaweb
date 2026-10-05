@@ -1,0 +1,55 @@
+/* =================================================================
+   ARCHIVO: perfil.css
+   Estilos EXCLUSIVOS de la pantalla de perfil (perfil.html).
+   ================================================================= */
+
+.perfil-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.perfil-tarjeta-avatar {
+    text-align: center;
+}
+
+.perfil-avatar {
+    font-size: 80px;
+    color: var(--color-azul);
+    margin-bottom: 10px;
+}
+
+.perfil-tarjeta-avatar h2 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.perfil-tarjeta-avatar p {
+    color: var(--color-texto-suave);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.perfil-etiqueta {
+    display: inline-block;
+    background-color: #eaf3fc;
+    color: var(--color-azul);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+/* El campo de correo está deshabilitado (no editable), por eso
+   le damos un color de fondo distinto para que se note visualmente */
+#perfilEmail:disabled {
+    background-color: var(--color-gris-fondo);
+    color: var(--color-texto-suave);
+}
+
+@media (max-width: 900px) {
+    .perfil-grid {
+        grid-template-columns: 1fr;
+    }
+}

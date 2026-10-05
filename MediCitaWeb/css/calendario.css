@@ -1,0 +1,97 @@
+/* =================================================================
+   ARCHIVO: calendario.css
+   Estilos EXCLUSIVOS de la pantalla de calendario (calendario.html).
+   ================================================================= */
+
+.calendario-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.calendario-encabezado h2 {
+    font-size: 18px;
+    color: var(--color-azul);
+    text-transform: capitalize;
+}
+
+.btn-icono {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 50%;
+    background-color: var(--color-blanco);
+    color: var(--color-azul);
+    font-size: 14px;
+}
+
+.btn-icono:hover {
+    background-color: #eaf3fc;
+}
+
+/* Fila con los nombres de los días de la semana (Dom, Lun, Mar...) */
+.calendario-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-texto-suave);
+    margin-bottom: 8px;
+}
+
+/* Cuadrícula principal donde se dibujan las celdas de los días */
+.calendario-grilla {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.dia-calendario {
+    aspect-ratio: 1 / 1; /* mantiene cada celda cuadrada */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: var(--color-gris-fondo);
+    font-size: 14px;
+    position: relative;
+}
+
+/* Celda vacía (relleno antes del día 1 o después del último día del mes) */
+.dia-calendario.vacio {
+    background-color: transparent;
+}
+
+/* Resalta visualmente el día de hoy */
+.dia-calendario.hoy {
+    border: 2px solid var(--color-azul);
+    font-weight: 700;
+}
+
+/* Los días que tienen alguna cita programada se pueden seleccionar con clic */
+.dia-calendario.con-cita {
+    background-color: #e5f6e6;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.dia-calendario.con-cita:hover {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+}
+
+/* Puntito verde debajo del número, indicando que hay una cita ese día */
+.dia-calendario__punto {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-verde-oscuro);
+    margin-top: 3px;
+}
+
+.dia-calendario.con-cita:hover .dia-calendario__punto {
+    background-color: var(--color-blanco);
+}

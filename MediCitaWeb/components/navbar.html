@@ -1,0 +1,45 @@
+<!-- ============================================================
+     COMPONENTE: NAVBAR (Barra de navegación superior)
+     Este archivo NO se abre directamente en el navegador.
+     Se inserta dentro de las páginas mediante JavaScript
+     (ver la función cargarComponente() en js/app.js)
+     ============================================================ -->
+<nav class="navbar">
+    <div class="navbar__contenedor">
+
+        <!-- Logo y nombre de la marca. Al hacer clic, siempre regresa al inicio -->
+        <a href="index.html" class="navbar__logo">
+            <i class="fa-solid fa-stethoscope"></i>
+            <span>MediCita<span class="navbar__logo-resaltado">Web</span></span>
+        </a>
+
+        <!-- Botón "hamburguesa" que solo se muestra en pantallas pequeñas (celulares) -->
+        <button class="navbar__toggle" id="btnToggleMenu" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Lista de enlaces de navegación -->
+        <ul class="navbar__menu" id="navbarMenu">
+
+            <!-- Enlaces que se muestran a TODOS los visitantes -->
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="medicos.html">Médicos</a></li>
+
+            <!-- Estos enlaces se muestran solo si el usuario NO ha iniciado sesión.
+                 La clase "solo-invitado" es controlada por JavaScript (app.js) -->
+            <li class="solo-invitado"><a href="login.html">Iniciar Sesión</a></li>
+            <li class="solo-invitado">
+                <a href="registro.html" class="navbar__btn-registro">Registrarse</a>
+            </li>
+
+            <!-- Estos enlaces se muestran solo si el usuario YA inició sesión.
+                 La clase "solo-usuario" está oculta por defecto en el CSS -->
+            <li class="solo-usuario"><a href="dashboard.html">Mi Panel</a></li>
+            <li class="solo-usuario"><a href="perfil.html">Perfil</a></li>
+            <li class="solo-usuario">
+                <a href="#" id="btnCerrarSesionNav" class="navbar__btn-registro">Cerrar Sesión</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

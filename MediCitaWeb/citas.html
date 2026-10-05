@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PÁGINA: citas.html
+     Permite al paciente reservar una nueva cita médica,
+     seleccionando especialidad, médico, fecha y hora.
+     ============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cita | MediCita Web</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/citas.css">
+</head>
+<body>
+
+    <div id="navbarContenedor"></div>
+
+    <div class="layout-app">
+        <div id="sidebarContenedor"></div>
+
+        <main class="contenido-principal">
+
+            <div class="encabezado-pagina">
+                <h1>Reservar Cita Médica</h1>
+                <p>Sigue los pasos y elige el horario que más te convenga.</p>
+            </div>
+
+            <div class="alerta alerta-exito" id="alertaCitaConfirmada">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="textoAlertaCita"></span>
+            </div>
+
+            <div class="tarjeta">
+                <form id="formularioCitas">
+
+                    <!-- Paso 1: Especialidad -->
+                    <div class="grupo-formulario" id="grupoEspecialidad">
+                        <label for="especialidad">1. Elige una especialidad</label>
+                        <select id="especialidad">
+                            <option value="">Selecciona una especialidad...</option>
+                            <!-- Las opciones se generan dinámicamente en citas.js a partir de ESPECIALIDADES -->
+                        </select>
+                        <span class="mensaje-error">Debes elegir una especialidad.</span>
+                    </div>
+
+                    <!-- Paso 2: Médico (depende de la especialidad elegida) -->
+                    <div class="grupo-formulario" id="grupoMedico">
+                        <label for="medico">2. Elige un médico</label>
+                        <select id="medico" disabled>
+                            <option value="">Primero elige una especialidad</option>
+                        </select>
+                        <span class="mensaje-error">Debes elegir un médico.</span>
+                    </div>
+
+                    <!-- Paso 3: Fecha -->
+                    <div class="grupo-formulario" id="grupoFecha">
+                        <label for="fecha">3. Elige una fecha</label>
+                        <input type="date" id="fecha">
+                        <span class="mensaje-error">Debes elegir una fecha válida (a partir de hoy).</span>
+                    </div>
+
+                    <!-- Paso 4: Hora (depende del médico elegido) -->
+                    <div class="grupo-formulario" id="grupoHora">
+                        <label>4. Elige un horario disponible</label>
+                        <div class="lista-horarios" id="listaHorarios">
+                            <p class="texto-vacio">Elige primero un médico para ver sus horarios.</p>
+                        </div>
+                        <span class="mensaje-error">Debes seleccionar un horario.</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-exito btn-ancho-completo">Confirmar Reserva</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="footerContenedor"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/citas.js"></script>
+</body>
+</html>

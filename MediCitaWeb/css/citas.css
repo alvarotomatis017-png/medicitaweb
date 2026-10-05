@@ -1,0 +1,48 @@
+/* =================================================================
+   ARCHIVO: citas.css
+   Estilos EXCLUSIVOS de la pantalla de reserva de citas (citas.html).
+   ================================================================= */
+
+/* La alerta de confirmación incluye un ícono, por eso alineamos
+   su contenido en fila en lugar del bloque simple de style.css */
+#alertaCitaConfirmada {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+#alertaCitaConfirmada.mostrar {
+    display: flex;
+}
+
+/* Cuadrícula de botones de horario (mañana/tarde disponibles del médico elegido) */
+.lista-horarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Cada horario es un botón que el usuario puede seleccionar con un clic */
+.boton-horario {
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-texto);
+    transition: all 0.15s ease;
+}
+
+.boton-horario:hover {
+    border-color: var(--color-azul);
+    color: var(--color-azul);
+}
+
+/* Estado del horario que el usuario ya seleccionó */
+.boton-horario.seleccionado {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: var(--color-blanco);
+}

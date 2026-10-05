@@ -1,0 +1,38 @@
+<!-- ============================================================
+     COMPONENTE: SIDEBAR (Menú lateral)
+     Se usa únicamente dentro de las páginas privadas del sistema:
+     dashboard, citas, calendario, historial, medicos (vista interna) y perfil.
+     Cada página marca su propio enlace como "activo" agregando la
+     clase "activo" desde su propio archivo JS (ver inicializarSidebar()).
+     ============================================================ -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar__usuario">
+        <i class="fa-solid fa-circle-user"></i>
+        <!-- El nombre se llena dinámicamente desde localStorage con JavaScript -->
+        <p id="sidebarNombreUsuario">Paciente</p>
+    </div>
+
+    <nav class="sidebar__menu">
+        <a href="dashboard.html" data-pagina="dashboard">
+            <i class="fa-solid fa-table-columns"></i> Panel Principal
+        </a>
+        <a href="citas.html" data-pagina="citas">
+            <i class="fa-solid fa-calendar-plus"></i> Reservar Cita
+        </a>
+        <a href="calendario.html" data-pagina="calendario">
+            <i class="fa-solid fa-calendar-days"></i> Calendario
+        </a>
+        <a href="historial.html" data-pagina="historial">
+            <i class="fa-solid fa-notes-medical"></i> Historial Médico
+        </a>
+        <a href="medicos.html" data-pagina="medicos">
+            <i class="fa-solid fa-user-doctor"></i> Médicos
+        </a>
+        <a href="perfil.html" data-pagina="perfil">
+            <i class="fa-solid fa-id-card"></i> Mi Perfil
+        </a>
+        <a href="#" id="btnCerrarSesionSidebar" data-pagina="salir">
+            <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+        </a>
+    </nav>
+</aside>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PÁGINA: dashboard.html
+     Panel principal del paciente después de iniciar sesión.
+     Muestra accesos rápidos a las demás secciones y un resumen
+     de sus próximas citas.
+     ============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Panel | MediCita Web</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <div id="navbarContenedor"></div>
+
+    <div class="layout-app">
+        <!-- Contenedor donde se inserta el sidebar (components/sidebar.html) -->
+        <div id="sidebarContenedor"></div>
+
+        <main class="contenido-principal">
+
+            <div class="encabezado-pagina">
+                <h1 id="saludoUsuario">¡Hola de nuevo!</h1>
+                <p>Este es el resumen de tu actividad en MediCita Web.</p>
+            </div>
+
+            <!-- Tarjetas con datos numéricos rápidos -->
+            <div class="dashboard-resumen">
+                <div class="tarjeta tarjeta-resumen">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div>
+                        <span id="totalCitasProximas">0</span>
+                        <p>Citas próximas</p>
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-resumen">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    <div>
+                        <span id="totalCitasHistorial">0</span>
+                        <p>Atenciones registradas</p>
+                    </div>
+                </div>
+                <div class="tarjeta tarjeta-resumen">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <div>
+                        <span id="totalMedicos">0</span>
+                        <p>Médicos disponibles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accesos directos a las funcionalidades principales -->
+            <h2 class="subtitulo-seccion">Accesos rápidos</h2>
+            <div class="dashboard-accesos">
+                <a href="citas.html" class="tarjeta acceso-rapido">
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    <h3>Reservar Cita</h3>
+                    <p>Elige especialidad, médico, fecha y hora.</p>
+                </a>
+                <a href="calendario.html" class="tarjeta acceso-rapido">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h3>Calendario</h3>
+                    <p>Visualiza tus citas programadas del mes.</p>
+                </a>
+                <a href="historial.html" class="tarjeta acceso-rapido">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <h3>Historial Médico</h3>
+                    <p>Revisa tus atenciones anteriores.</p>
+                </a>
+                <a href="medicos.html" class="tarjeta acceso-rapido">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <h3>Médicos</h3>
+                    <p>Conoce a los especialistas disponibles.</p>
+                </a>
+            </div>
+
+            <!-- Listado de las próximas citas del paciente -->
+            <h2 class="subtitulo-seccion">Tus próximas citas</h2>
+            <div class="tarjeta" id="tarjetaProximasCitas">
+                <!-- Este contenido se genera dinámicamente desde dashboard.js -->
+                <p class="texto-vacio">Cargando tus citas...</p>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="footerContenedor"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

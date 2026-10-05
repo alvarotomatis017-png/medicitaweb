@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PÁGINA: registro.html
+     Formulario para crear una nueva cuenta de paciente.
+     Los datos se guardan en localStorage, dentro de la lista
+     "medicitaUsuarios", para poder iniciar sesión después.
+     ============================================================ -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta | MediCita Web</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css"> <!-- reutilizamos el estilo de tarjeta centrada del login -->
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+
+    <div id="navbarContenedor"></div>
+
+    <section class="pagina-auth">
+        <div class="tarjeta auth-tarjeta auth-tarjeta--ancha">
+            <div class="auth-icono">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h1>Crea tu cuenta de paciente</h1>
+            <p class="auth-subtitulo">Regístrate para empezar a reservar tus citas médicas.</p>
+
+            <div class="alerta alerta-exito" id="alertaRegistro"></div>
+
+            <form id="formularioRegistro" novalidate>
+
+                <!-- Usamos una grilla de 2 columnas para nombre/apellido en pantallas grandes -->
+                <div class="fila-formulario">
+                    <div class="grupo-formulario" id="grupoNombre">
+                        <label for="nombre">Nombres</label>
+                        <input type="text" id="nombre" placeholder="Ej: María">
+                        <span class="mensaje-error">Ingresa tu nombre.</span>
+                    </div>
+                    <div class="grupo-formulario" id="grupoApellido">
+                        <label for="apellido">Apellidos</label>
+                        <input type="text" id="apellido" placeholder="Ej: Gonzáles">
+                        <span class="mensaje-error">Ingresa tu apellido.</span>
+                    </div>
+                </div>
+
+                <div class="grupo-formulario" id="grupoEmailRegistro">
+                    <label for="emailRegistro">Correo electrónico</label>
+                    <input type="email" id="emailRegistro" placeholder="ejemplo@correo.com">
+                    <span class="mensaje-error">Ingresa un correo electrónico válido.</span>
+                </div>
+
+                <div class="grupo-formulario" id="grupoTelefono">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" placeholder="Ej: 987654321">
+                    <span class="mensaje-error">Ingresa un teléfono de 9 dígitos.</span>
+                </div>
+
+                <div class="fila-formulario">
+                    <div class="grupo-formulario" id="grupoPasswordRegistro">
+                        <label for="passwordRegistro">Contraseña</label>
+                        <input type="password" id="passwordRegistro" placeholder="Mínimo 6 caracteres">
+                        <span class="mensaje-error">La contraseña debe tener al menos 6 caracteres.</span>
+                    </div>
+                    <div class="grupo-formulario" id="grupoConfirmarPassword">
+                        <label for="confirmarPassword">Confirmar contraseña</label>
+                        <input type="password" id="confirmarPassword" placeholder="Repite tu contraseña">
+                        <span class="mensaje-error">Las contraseñas no coinciden.</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-exito btn-ancho-completo">Crear Cuenta</button>
+            </form>
+
+            <p class="auth-enlace">
+                ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>
+            </p>
+        </div>
+    </section>
+
+    <div id="footerContenedor"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>

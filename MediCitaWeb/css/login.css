@@ -1,0 +1,150 @@
+/* =================================================================
+   ARCHIVO: login.css
+   Estilos EXCLUSIVOS de la pantalla de inicio de sesión.
+   Se apoya en las clases genéricas de formularios definidas en
+   style.css (grupo-formulario, alerta, btn, etc).
+   ================================================================= */
+
+/* Sección que centra la tarjeta de login en toda la pantalla */
+.pagina-auth {
+    min-height: calc(100vh - 70px); /* resta el alto del navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    background-color: var(--color-gris-fondo);
+}
+
+.auth-tarjeta {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.auth-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #eaf3fc;
+    color: var(--color-azul);
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+}
+
+.auth-tarjeta h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.auth-subtitulo {
+    color: var(--color-texto-suave);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* El formulario alinea el texto a la izquierda aunque la tarjeta esté centrada */
+.auth-tarjeta form {
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+/* Separador entre el botón principal y el botón de acceso de demostración */
+#btnAccesoDemo {
+    margin-top: 10px;
+}
+
+.auth-enlace {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--color-texto-suave);
+}
+
+.auth-enlace a {
+    color: var(--color-azul);
+    font-weight: 600;
+}
+/* --- AGREGAR AL FINAL DE TU ARCHIVO CSS --- */
+
+.btn-login {
+  position: relative;
+  overflow: visible;
+}
+
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #facc15;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.btn-login.animado .s1 { animation: estrella-top-left 0.6s ease-out forwards; }
+.btn-login.animado .s2 { animation: estrella-top-right 0.6s ease-out forwards; }
+.btn-login.animado .s3 { animation: estrella-bottom-left 0.6s ease-out forwards; }
+.btn-login.animado .s4 { animation: estrella-bottom-right 0.6s ease-out forwards; }
+
+@keyframes estrella-top-left {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(-65px, -45px) scale(1.3) rotate(-30deg); }
+}
+
+@keyframes estrella-top-right {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(55px, -50px) scale(1.3) rotate(45deg); }
+}
+
+@keyframes estrella-bottom-left {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(-60px, 40px) scale(1.3) rotate(60deg); }
+}
+
+@keyframes estrella-bottom-right {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(50px, 45px) scale(1.3) rotate(-45deg); }
+}
+/* --- AGREGAR AL FINAL DE TU ARCHIVO CSS --- */
+
+.btn-login {
+  position: relative;
+  overflow: visible;
+}
+
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #facc15;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.btn-login.animado .s1 { animation: estrella-top-left 0.6s ease-out forwards; }
+.btn-login.animado .s2 { animation: estrella-top-right 0.6s ease-out forwards; }
+.btn-login.animado .s3 { animation: estrella-bottom-left 0.6s ease-out forwards; }
+.btn-login.animado .s4 { animation: estrella-bottom-right 0.6s ease-out forwards; }
+
+@keyframes estrella-top-left {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(-65px, -45px) scale(1.3) rotate(-30deg); }
+}
+
+@keyframes estrella-top-right {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(55px, -50px) scale(1.3) rotate(45deg); }
+}
+
+@keyframes estrella-bottom-left {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(-60px, 40px) scale(1.3) rotate(60deg); }
+}
+
+@keyframes estrella-bottom-right {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.4); }
+  100% { opacity: 0; transform: translate(50px, 45px) scale(1.3) rotate(-45deg); }
+}

@@ -1,0 +1,720 @@
+/* =================================================================
+   ARCHIVO: style.css
+   DESCRIPCIÓN: Estilos GLOBALES del proyecto MediCita Web.
+   Aquí se definen los colores institucionales, la tipografía,
+   el navbar, el footer, el sidebar y clases de utilidad que se
+   repiten en varias páginas (botones, tarjetas, formularios, etc).
+   Cada página tiene ADEMÁS su propio archivo CSS (login.css,
+   dashboard.css, etc) que se importa DESPUÉS de este, para los
+   estilos que son específicos de esa pantalla.
+   ================================================================= */
+
+/* -----------------------------------------------------------------
+   1. VARIABLES DE COLOR (paleta institucional definida en la guía)
+   Usamos variables CSS (:root) para no repetir códigos de color
+   en todo el archivo y poder cambiarlos fácilmente en un solo lugar.
+   ----------------------------------------------------------------- */
+:root {
+    --color-azul: #1976D2;         /* Confianza y profesionalismo */
+    --color-azul-oscuro: #125a9c;  /* Variante oscura para hover/estados */
+    --color-verde: #4CAF50;        /* Salud y bienestar */
+    --color-verde-oscuro: #3d8b40; /* Variante oscura para hover/estados */
+    --color-blanco: #FFFFFF;       /* Limpieza visual */
+    --color-gris-fondo: #F5F7FA;   /* Fondos generales */
+    --color-gris-borde: #dde3ea;   /* Bordes suaves */
+    --color-texto: #2b2f36;        /* Texto principal, no negro puro */
+    --color-texto-suave: #6b7280;  /* Texto secundario / descripciones */
+    --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --radio-borde: 10px;
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+/* -----------------------------------------------------------------
+   2. RESET BÁSICO
+   Quitamos los márgenes y rellenos por defecto del navegador para
+   tener un punto de partida limpio e igual en todos los navegadores.
+   ----------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* el padding y el borde no aumentan el ancho total */
+}
+
+html {
+    scroll-behavior: smooth; /* desplazamiento suave al usar anclas (#) */
+}
+
+body {
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
+    background-color: var(--color-gris-fondo);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Contenedor genérico para centrar el contenido y limitar su ancho máximo */
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* -----------------------------------------------------------------
+   3. BOTONES REUTILIZABLES
+   Se usan en formularios, tarjetas y llamados a la acción (CTA)
+   ----------------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border: none;
+    border-radius: var(--radio-borde);
+    font-size: 15px;
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* pequeño efecto de "levantar" al pasar el mouse */
+}
+
+.btn-primario {
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
+}
+.btn-primario:hover {
+    background-color: var(--color-azul-oscuro);
+}
+
+.btn-exito {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+}
+.btn-exito:hover {
+    background-color: var(--color-verde-oscuro);
+}
+
+.btn-contorno {
+    background-color: transparent;
+    border: 2px solid var(--color-azul);
+    color: var(--color-azul);
+}
+.btn-contorno:hover {
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
+}
+
+.btn-ancho-completo {
+    width: 100%;
+    text-align: center;
+}
+
+/* -----------------------------------------------------------------
+   4. NAVBAR (barra de navegación superior - components/navbar.html)
+   ----------------------------------------------------------------- */
+.navbar {
+    background-color: var(--color-blanco);
+    box-shadow: var(--sombra-suave);
+    position: sticky; /* se queda fija arriba al hacer scroll */
+    top: 0;
+    z-index: 100; /* siempre por encima del resto del contenido */
+}
+
+.navbar__contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-azul);
+}
+
+.navbar__logo-resaltado {
+    color: var(--color-verde);
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.navbar__menu a {
+    font-weight: 500;
+    color: var(--color-texto);
+    transition: color 0.2s ease;
+}
+
+.navbar__menu a:hover {
+    color: var(--color-azul);
+}
+
+.navbar__btn-registro {
+    background-color: var(--color-verde);
+    color: var(--color-blanco) !important;
+    padding: 8px 18px;
+    border-radius: var(--radio-borde);
+}
+
+.navbar__btn-registro:hover {
+    background-color: var(--color-verde-oscuro);
+}
+
+.navbar__toggle {
+    display: none; /* solo aparece en la versión responsive (ver media query) */
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--color-azul);
+}
+
+/* Estas clases controlan qué enlaces se ven según si el usuario
+   inició sesión o no. Por defecto se oculta la vista de "usuario".
+   La función actualizarNavbarSesion() en app.js agrega/quita
+   la clase "sesion-activa" al <body>. */
+.solo-usuario { display: none; }
+
+body.sesion-activa .solo-usuario { display: list-item; }
+body.sesion-activa .solo-invitado { display: none; }
+
+/* -----------------------------------------------------------------
+   5. LAYOUT DE PÁGINA INTERNA (sidebar + contenido)
+   Se usa en dashboard, citas, calendario, historial, medicos y perfil
+   ----------------------------------------------------------------- */
+.layout-app {
+    display: flex;
+    min-height: calc(100vh - 70px); /* resta la altura del navbar */
+}
+
+.sidebar {
+    width: 250px;
+    flex-shrink: 0; /* que no se achique cuando el contenido es grande */
+    background-color: var(--color-blanco);
+    border-right: 1px solid var(--color-gris-borde);
+    padding: 25px 0;
+}
+
+.sidebar__usuario {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-gris-borde);
+    margin-bottom: 15px;
+}
+
+.sidebar__usuario i {
+    font-size: 45px;
+    color: var(--color-azul);
+}
+
+.sidebar__usuario p {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__menu a {
+    padding: 13px 25px;
+    color: var(--color-texto-suave);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 4px solid transparent; /* se rellena cuando el enlace está activo */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar__menu a:hover {
+    background-color: var(--color-gris-fondo);
+    color: var(--color-azul);
+}
+
+/* La clase "activo" la asigna el JS de cada página según en cuál está parado */
+.sidebar__menu a.activo {
+    color: var(--color-azul);
+    border-left-color: var(--color-azul);
+    background-color: #eaf3fc;
+    font-weight: 600;
+}
+
+.contenido-principal {
+    flex: 1; /* ocupa todo el espacio restante junto al sidebar */
+    padding: 30px;
+}
+
+.encabezado-pagina {
+    margin-bottom: 25px;
+}
+
+.encabezado-pagina h1 {
+    font-size: 26px;
+    color: var(--color-azul);
+    margin-bottom: 5px;
+}
+
+.encabezado-pagina p {
+    color: var(--color-texto-suave);
+}
+
+/* -----------------------------------------------------------------
+   6. TARJETAS (cards) genéricas reutilizadas en varias pantallas
+   ----------------------------------------------------------------- */
+.tarjeta {
+    background-color: var(--color-blanco);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-suave);
+    padding: 20px;
+}
+
+/* -----------------------------------------------------------------
+   7. FORMULARIOS genéricos (login, registro, citas, perfil)
+   ----------------------------------------------------------------- */
+.grupo-formulario {
+    margin-bottom: 18px;
+}
+
+.grupo-formulario label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.grupo-formulario input,
+.grupo-formulario select,
+.grupo-formulario textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: var(--color-blanco);
+    transition: border-color 0.2s ease;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+/* Fila de dos columnas dentro de un formulario (ej: nombre/apellido,
+   contraseña/confirmar contraseña). Se usa en registro.html y perfil.html */
+.fila-formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 480px) {
+    .fila-formulario {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mensaje de error debajo de un campo. Se muestra/oculta con JS */
+.mensaje-error {
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none; /* JavaScript le cambia a "block" cuando hay un error */
+}
+
+.grupo-formulario.con-error input,
+.grupo-formulario.con-error select {
+    border-color: #d32f2f;
+}
+
+.grupo-formulario.con-error .mensaje-error {
+    display: block;
+}
+
+/* Caja de alerta genérica (éxito / información) usada tras acciones del usuario */
+.alerta {
+    padding: 13px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    display: none; /* se activa por JavaScript */
+}
+
+.alerta.mostrar {
+    display: block;
+}
+
+.alerta-exito {
+    background-color: #e5f6e6;
+    color: var(--color-verde-oscuro);
+    border: 1px solid var(--color-verde);
+}
+
+.alerta-info {
+    background-color: #e8f1fb;
+    color: var(--color-azul-oscuro);
+    border: 1px solid var(--color-azul);
+}
+
+/* -----------------------------------------------------------------
+   8. FOOTER (components/footer.html)
+   ----------------------------------------------------------------- */
+.footer {
+    background-color: #1b2733;
+    color: #c7ced6;
+    margin-top: 50px;
+}
+
+.footer__contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 0 25px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer__columna h3,
+.footer__columna h4 {
+    color: var(--color-blanco);
+    margin-bottom: 14px;
+}
+
+.footer__columna p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer__columna ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer__columna a:hover {
+    color: var(--color-verde);
+}
+
+.footer__linea-inferior {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 13px;
+    border-top: 1px solid #303c48;
+}
+
+/* -----------------------------------------------------------------
+   9. PÁGINA DE INICIO (index.html)
+   Como index.html no tiene un archivo CSS propio (según la
+   estructura de carpetas del proyecto), sus estilos particulares
+   se agregan aquí, en el archivo global.
+   ----------------------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, var(--color-azul) 0%, var(--color-azul-oscuro) 100%);
+    color: var(--color-blanco);
+    padding: 70px 0;
+}
+
+.hero__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero__texto h1 {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.hero__texto p {
+    font-size: 16px;
+    opacity: 0.92;
+    margin-bottom: 26px;
+}
+
+.hero__botones {
+    display: flex;
+    gap: 15px;
+}
+
+.hero__botones .btn-contorno {
+    border-color: var(--color-blanco);
+    color: var(--color-blanco);
+}
+.hero__botones .btn-contorno:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-azul);
+}
+
+.hero__imagen {
+    text-align: center;
+}
+
+.hero__imagen i {
+    font-size: 200px;
+    opacity: 0.9;
+}
+
+.seccion {
+    padding: 70px 0;
+}
+
+.seccion--gris {
+    background-color: var(--color-blanco);
+}
+
+.seccion__titulo {
+    text-align: center;
+    font-size: 28px;
+    color: var(--color-azul);
+    margin-bottom: 10px;
+}
+
+.seccion__subtitulo {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: var(--color-texto-suave);
+}
+
+.tarjetas-beneficios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.tarjeta-beneficio {
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-beneficio:hover {
+    transform: translateY(-5px);
+}
+
+.tarjeta-beneficio i {
+    font-size: 34px;
+    color: var(--color-verde);
+    margin-bottom: 14px;
+}
+
+.tarjeta-beneficio h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.tarjeta-beneficio p {
+    font-size: 14px;
+    color: var(--color-texto-suave);
+}
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.paso {
+    text-align: center;
+    padding: 20px;
+}
+
+.paso__numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.paso h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.paso p {
+    font-size: 14px;
+    color: var(--color-texto-suave);
+}
+
+.cta-final {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 55px 0;
+}
+
+.cta-final h2 {
+    margin-bottom: 22px;
+    font-size: 24px;
+}
+
+.cta-final .btn-primario {
+    background-color: var(--color-blanco);
+    color: var(--color-verde-oscuro);
+}
+.cta-final .btn-primario:hover {
+    background-color: #eaf3fc;
+}
+
+/* -----------------------------------------------------------------
+   10. LISTAS DE CITAS (reutilizado en dashboard, calendario e historial)
+   ----------------------------------------------------------------- */
+.subtitulo-seccion {
+    font-size: 19px;
+    color: var(--color-texto);
+    margin: 28px 0 14px;
+}
+
+.texto-vacio {
+    color: var(--color-texto-suave);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.item-cita {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--color-gris-borde);
+}
+
+.item-cita:last-child {
+    border-bottom: none;
+}
+
+.item-cita__icono {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #eaf3fc;
+    color: var(--color-azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.item-cita__info {
+    flex: 1;
+}
+
+.item-cita__info h4 {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.item-cita__info p {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+
+.item-cita__etiqueta {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.item-cita__etiqueta--proxima {
+    background-color: #e8f1fb;
+    color: var(--color-azul-oscuro);
+}
+
+.item-cita__etiqueta--atendida {
+    background-color: #e5f6e6;
+    color: var(--color-verde-oscuro);
+}
+
+/* -----------------------------------------------------------------
+   11. RESPONSIVE (adaptación a tablets y celulares)
+   Se usan "media queries": estilos que solo aplican bajo cierto ancho
+   ----------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .layout-app {
+        flex-direction: column; /* el sidebar pasa a ir arriba del contenido */
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-gris-borde);
+    }
+    .footer__contenedor {
+        grid-template-columns: 1fr; /* las columnas del footer se apilan */
+    }
+    .hero__grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero__botones {
+        justify-content: center;
+    }
+    .hero__imagen i {
+        font-size: 120px;
+    }
+    .tarjetas-beneficios,
+    .pasos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: block; /* aparece el botón de hamburguesa */
+    }
+    .navbar__menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-blanco);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+        gap: 15px;
+        box-shadow: var(--sombra-suave);
+        display: none; /* oculto hasta que se presiona el botón hamburguesa */
+    }
+    .navbar__menu.mostrar {
+        display: flex;
+    }
+}

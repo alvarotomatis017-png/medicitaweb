@@ -1,0 +1,17 @@
+/* =================================================================
+   ARCHIVO: registro.css
+   Estilos EXCLUSIVOS de la pantalla de registro.
+   La mayoría del estilo de la tarjeta ya viene de login.css
+   (auth-tarjeta, auth-icono, auth-subtitulo, auth-enlace), aquí solo
+   agregamos lo que es distinto: la tarjeta más ancha y la fila
+   de dos columnas para nombre/apellido y las contraseñas.
+   ================================================================= */
+
+/* El formulario de registro tiene más campos, por eso usamos
+   una tarjeta un poco más ancha que la del login */
+.auth-tarjeta--ancha {
+    max-width: 520px;
+}
+
+/* La clase "fila-formulario" (grilla de 2 columnas) está definida de
+   forma global en style.css, porque también se reutiliza en perfil.html */

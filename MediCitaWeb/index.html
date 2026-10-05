@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     PÁGINA: index.html (Inicio)
+     Esta es la página de bienvenida del sitio, visible para
+     cualquier visitante, sin necesidad de haber iniciado sesión.
+     ============================================================ -->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCita Web | Reserva tu cita médica en línea</title>
+
+    <!-- Fuente Poppins traída desde Google Fonts (según la guía de diseño) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Íconos Font Awesome (estetoscopio, calendario, etc) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Estilos globales del proyecto -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Aquí se insertará el navbar mediante JavaScript (ver app.js) -->
+    <div id="navbarContenedor"></div>
+
+    <!-- ===================== SECCIÓN HERO ===================== -->
+    <section class="hero">
+        <div class="contenedor hero__grid">
+            <div class="hero__texto">
+                <h1>Reserva tu cita médica sin salir de casa</h1>
+                <p>
+                    MediCita Web te permite elegir especialidad, médico, fecha y
+                    hora en pocos pasos, sin llamadas telefónicas ni colas de espera.
+                </p>
+                <div class="hero__botones">
+                    <a href="registro.html" class="btn btn-exito">Crear cuenta gratis</a>
+                    <a href="login.html" class="btn btn-contorno">Ya tengo cuenta</a>
+                </div>
+            </div>
+            <div class="hero__imagen">
+                <i class="fa-solid fa-laptop-medical"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SECCIÓN PROBLEMA / SOLUCIÓN ===================== -->
+    <section class="seccion">
+        <div class="contenedor">
+            <h2 class="seccion__titulo">¿Por qué usar MediCita Web?</h2>
+            <p class="seccion__subtitulo">
+                Actualmente muchos pacientes deben acudir presencialmente o llamar
+                por teléfono para pedir una cita, generando colas y pérdida de tiempo.
+                Nuestra plataforma digitaliza todo ese proceso.
+            </p>
+
+            <div class="tarjetas-beneficios">
+                <div class="tarjeta tarjeta-beneficio">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>Ahorra tiempo</h3>
+                    <p>Reserva en minutos, desde cualquier lugar y a cualquier hora del día.</p>
+                </div>
+                <div class="tarjeta tarjeta-beneficio">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <h3>Elige a tu médico</h3>
+                    <p>Consulta especialidades y horarios disponibles antes de reservar.</p>
+                </div>
+                <div class="tarjeta tarjeta-beneficio">
+                    <i class="fa-solid fa-bell"></i>
+                    <h3>Recibe recordatorios</h3>
+                    <p>Visualiza tus próximas citas desde tu panel personal en todo momento.</p>
+                </div>
+                <div class="tarjeta tarjeta-beneficio">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    <h3>Historial digital</h3>
+                    <p>Consulta el registro de tus atenciones médicas anteriores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SECCIÓN CÓMO FUNCIONA ===================== -->
+    <section class="seccion seccion--gris">
+        <div class="contenedor">
+            <h2 class="seccion__titulo">¿Cómo funciona?</h2>
+
+            <div class="pasos">
+                <div class="paso">
+                    <span class="paso__numero">1</span>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta de paciente en menos de un minuto.</p>
+                </div>
+                <div class="paso">
+                    <span class="paso__numero">2</span>
+                    <h3>Elige especialidad</h3>
+                    <p>Selecciona el área médica y el especialista que necesitas.</p>
+                </div>
+                <div class="paso">
+                    <span class="paso__numero">3</span>
+                    <h3>Selecciona fecha y hora</h3>
+                    <p>Escoge el horario disponible que más te convenga.</p>
+                </div>
+                <div class="paso">
+                    <span class="paso__numero">4</span>
+                    <h3>¡Listo!</h3>
+                    <p>Recibe la confirmación y gestiona tu cita desde tu panel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA FINAL ===================== -->
+    <section class="cta-final">
+        <div class="contenedor">
+            <h2>Empieza a gestionar tus citas médicas hoy mismo</h2>
+            <a href="registro.html" class="btn btn-primario">Registrarme ahora</a>
+        </div>
+    </section>
+
+    <!-- Aquí se insertará el footer mediante JavaScript (ver app.js) -->
+    <div id="footerContenedor"></div>
+
+    <!-- Scripts: primero el global (app.js), luego los eventos propios de esta página -->
+    <script src="js/app.js"></script>
+    <script>
+        // Al cargar la página, insertamos el navbar y el footer.
+        // Al navbar le pasamos inicializarNavbar como "callback" porque
+        // sus botones necesitan que el HTML ya esté insertado en el DOM.
+        cargarComponente("navbarContenedor", "components/navbar.html", inicializarNavbar);
+        cargarComponente("footerContenedor", "components/footer.html");
+    </script>
+</body>
+
+</html>

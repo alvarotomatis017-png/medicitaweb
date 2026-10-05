@@ -1,0 +1,84 @@
+/* =================================================================
+   ARCHIVO: dashboard.css
+   Estilos EXCLUSIVOS del panel principal (dashboard.html).
+   ================================================================= */
+
+/* Fila de 3 tarjetas con números resumen (citas próximas, historial, médicos) */
+.dashboard-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-resumen {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tarjeta-resumen i {
+    font-size: 30px;
+    color: var(--color-azul);
+    background-color: #eaf3fc;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tarjeta-resumen span {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+}
+
+.tarjeta-resumen p {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+
+/* Grilla de accesos rápidos (tarjetas con enlace a otras páginas) */
+.dashboard-accesos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.acceso-rapido {
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.acceso-rapido:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.acceso-rapido i {
+    font-size: 28px;
+    color: var(--color-verde);
+    margin-bottom: 10px;
+}
+
+.acceso-rapido h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.acceso-rapido p {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+
+@media (max-width: 900px) {
+    .dashboard-resumen {
+        grid-template-columns: 1fr;
+    }
+    .dashboard-accesos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

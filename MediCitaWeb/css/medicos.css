@@ -1,0 +1,66 @@
+/* =================================================================
+   ARCHIVO: medicos.css
+   Estilos EXCLUSIVOS de la pantalla de médicos (medicos.html).
+   ================================================================= */
+
+.medicos-filtro {
+    max-width: 320px;
+}
+
+.grilla-medicos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.tarjeta-medico {
+    text-align: center;
+}
+
+.tarjeta-medico__foto {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #eaf3fc;
+    color: var(--color-azul);
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+}
+
+.tarjeta-medico h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.tarjeta-medico__especialidad {
+    display: inline-block;
+    background-color: #e5f6e6;
+    color: var(--color-verde-oscuro);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-medico__horarios {
+    font-size: 13px;
+    color: var(--color-texto-suave);
+    margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+    .grilla-medicos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .grilla-medicos {
+        grid-template-columns: 1fr;
+    }
+}
